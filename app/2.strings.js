@@ -5,6 +5,14 @@
 // EN: Declare three variables: hour, minute, second.
 //     Assign them the following values: 4, 35, 5.
 //     Display the time in the format 04:35:05 in the console.
+const time = '4'.padStart(2, '0') + ':' + '35'.padStart(2, '0') + ':' + '5'.padStart(2, '0');
+console.log(time);
+
+var hour = 4;
+var minute = 35;
+var second = 5;
+console.log(hour.toString().padStart(2, 0) + ':' + minute.toString().padStart(2, 0) + ':' + second.toString().padStart(2, 0));
+console.log(`$(hour.toString().padStart(2, 0)):$(minute.toString().padStart(2, 0)):$(second.toString().padStart(2, 0))`);
 
 // Task 02. repeat
 // RU: Создайте функцию, которая выведет в консоль пирамиду на 9 уровней как показано ниже
@@ -20,6 +28,14 @@
 //     333
 //     4444
 //     ...
+console.log("1");
+console.log("2".repeat(2));
+console.log("3".repeat(3));
+console.log("4".repeat(4));
+
+for (let i = 1; i <= 9; i++) {
+    console.log(i.toString().repeat(i));
+}
 
 // Task 03. includes
 // RU: Напишите код, который выводит в консоль true, если строка str содержит
@@ -28,11 +44,23 @@
 // EN: Create a snippet of code which displays the value true in the console
 //     when str contains 'viagra' or 'XXX', otherwise it displays false.
 
+let checker = function (string) {
+    let result;
+    result = (string.toLowerCase().includes('viagra') || string.toLowerCase().includes('XXX'));
+    return result;
+}
+
 // Task 04. includes + index
 // RU: Проверить, содержит ли строка второе вхождение подстроки,
 //     вернуть true/false.
 // EN: Check whether the string contains a second occurrence of a substring,
 //     return true / false.
+function containsSecond(str, substr) {
+    return str.includes(substr, str.indexOf(substr) + 1);
+}
+
+console.log(containsSecond('abcbc', 'b'))
+
 
 // Task 05. Template literal
 // RU: Создать строку: "ten times two totally is 20"
@@ -45,6 +73,10 @@
 //     const a = 10;
 //     const b = 2;
 //     and template literal
+const a = 10;
+const b = 2;
+console.log(`ten times two totally is ${a * b}`);
+
 
 // Task 06. normalize
 // RU: Создайте функцию, которая сравнивает юникод строки.
@@ -55,6 +87,11 @@
 //     Compare 2 strings:
 //     var str1 = '\u006d\u0061\u00f1';
 //     var str2 = '\u006d\u0061\u006e\u0303';
+var str1 = '\u006d\u0061\u00f1';
+var str2 = '\u006d\u0061\u006e\u0303';
+console.log(str1);
+console.log(str2);
+console.log(str1.normalize() == str2.normalize());
 
 // Task 07. endsWIth
 // RU: Создайте функцию, которая на вход получает массив имен фалов и расширение файла
@@ -62,11 +99,19 @@
 // EN: Create a function that gets an array of file names and a file extension as its parameters
 //     and returns a new array that contains the files of the specified extension.
 
+function filesWithExtension(extension, ...files) {
+    return files.filter(f => f.endsWith(`.${extension}`));
+}
+
 // Task 08. String.fromCodePoint
 // RU: Создать функцию, которая выводит в консоль строчку в формате 'символ - код'
 //     для кодов в диапазоне 78000 - 80000.
 // EN: Create a function that displays a line in the format 'character - code' to the console
 //     for codes in the range of 78000 - 80000.
+
+for (i = 78000; i <= 80000; i++) {
+    console.log(`${String.fromCodePoint(i)} - ${i}`);
+}
 
 // Task 09
 // RU: Создайте функцию, которая должна выводить в консоль следующую пирамиду
